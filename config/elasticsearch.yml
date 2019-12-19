@@ -1,0 +1,6 @@
+cluster.name: "docker-cluster01"
+node.name: fias-es01
+network.host: 0.0.0.0
+path.repo: /usr/share/elasticsearch/snapshots
+path.data: /usr/share/elasticsearch/data
+#path.logs: /usr/share/elasticsearch/logs

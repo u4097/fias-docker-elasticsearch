@@ -1,0 +1,39 @@
+version: '3.7'
+services:
+  es01:
+    image: oleg2019/elasticsearch:latest
+    build: .
+    container_name: es01
+    environment:
+      - node.name=es01
+      - cluster.name=es-docker-cluster
+      - cluster.initial_master_nodes=es01
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms2024m -Xmx2024m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - config:/usr/share/elasticsearch/config
+      - "/Volumes/DRIVE120G/elasticsearch/snapshots
+:/usr/share/elasticsearch/snapshots"
+      - "/Volumes/DRIVE120G/elasticsearch/data
+:/usr/share/elasticsearch/data"
+    ports:
+      - 9200:9200
+    expose:
+      - "9200"
+    networks:
+      - elastic
+
+
+volumes:
+  data:
+    driver: local
+  config:
+    driver: local
+
+networks:
+  elastic:
+    driver: bridge
