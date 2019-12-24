@@ -1,9 +1,12 @@
 version: '3.7'
 services:
   es01:
-    image: oleg2019/elasticsearch:latest
-    build: .
     container_name: es01
+    restart: always
+    build: 
+            context: .
+            dockerfile: Dockerfile
+    image: fias/elasticsearch
     environment:
       - node.name=es01
       - cluster.name=es-docker-cluster

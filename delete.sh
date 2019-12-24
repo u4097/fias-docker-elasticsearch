@@ -1,0 +1,1 @@
+http DELETE :9200/houses && http DELETE :9200/address
