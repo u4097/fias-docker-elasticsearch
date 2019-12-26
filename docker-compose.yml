@@ -1,7 +1,7 @@
 version: '3.7'
 services:
   es01:
-    container_name: es01
+    container_name: elasticsearch
     restart: always
     build: 
             context: .
@@ -28,6 +28,20 @@ services:
     networks:
       - elastic
 
+  kibana:
+    container_name: kibana 
+    image: docker.elastic.co/kibana/kibana:7.5.1
+    environment:
+      - ELASTICSEARCH_URL=http://elasticsearch:9200
+      - ELASTICSEARCH_HOST=es01
+    depends_on:
+      - es01
+    ports:
+      - 5601:5601
+    expose:
+      - "5601"
+    networks:
+      - elastic
 
 volumes:
   data:

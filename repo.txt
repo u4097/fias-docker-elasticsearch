@@ -1,9 +1,0 @@
-PUT /_snapshot/fias
-{
-  "type": "fs",
-  "settings": {
-    "compress": "true",
-    "location": "/usr/share/elasticsearch/snapshots"
-  }
-}
-http :9200/_cat/indices && http :9200/_snapshot/ && http :9200/_cat/repositories/
